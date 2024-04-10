@@ -11,8 +11,6 @@ medium_query = 'SK == 4'
 storm_query = 'SK > 4 and SK <= 6'
 heavy_storm_query = 'SK > 6'
 
-print(os.path)
-
 k_index_table = pd.read_csv( './kindex/k-index.txt', delimiter='\s+')
 #quite = list(filter(is_quite, k_index_table))
 #quite = k_index_table[(k_index_table["SK"] >= 0) & (k_index_table["SK"] <=0)]
@@ -74,19 +72,20 @@ for i in range(1,9):
     or_op = "or" if i<8 else ")"
     h_st_q += f"(7 <= `{i}`) {or_op} "
 
+k_index_table["DA-MON-YR"] = pd.to_datetime(k_index_table["DA-MON-YR"], format="%d-%b-%y")
+
 K_DATA["quiet"] = k_index_table.query(q_q)
 K_DATA["low"] = k_index_table.query(l_q)
 K_DATA["medium"] = k_index_table.query(m_q)
 K_DATA["storm"] = k_index_table.query(st_q)
 K_DATA["heavy_storm"] = k_index_table.query(h_st_q)
 
+str_dates = {}
 
-#for k_d in K_DATA.keys: dates["quiet"][k_d] = K_DATA[k_d]['DA-MON-YR'].values
+for d in K_DATA.keys(): str_dates[d] = K_DATA[d]["DA-MON-YR"].values
+
+dates = {}
 
 
-
-#for q in quiet.keys: dates[q]=(quiet[q]['DA-MON-YR'].values)
-
-#print(dates[0])
-
-v = []
+for d in str_dates.keys():
+    dates[d] = [*str_dates[d]]

@@ -170,8 +170,8 @@ if __name__ == '__main__':
   folder = os.path.join('2017', 'PET')
   op_count = safemd (folder, 0, op_count)
   
-  local_file = os.path.join('2017', 'PET', 'pet20170907min.min')
-  op_count = getfile ('https://imag-data.bgs.ac.uk/GIN_V1/GINServices?Request=GetData&format=IAGA2002&testObsys=0&observatoryIagaCode=PET&samplesPerDay=1440&orientation=HDZF&publicationState=adj-or-rep&recordTermination=UNIX&dataStartDate=2017-09-07&dataDuration=2', local_file, n_retries, 1, gin_username, gin_password, proxy_address, n_folders, n_downloads, op_count)
+  local_file = os.path.join('2017', 'PET', 'pet2017min.min')
+  op_count = getfile ('https://imag-data.bgs.ac.uk/GIN_V1/GINServices?Request=GetData&format=IAGA2002&testObsys=0&observatoryIagaCode=PET&samplesPerDay=1440&orientation=HDZF&publicationState=adj-or-rep&recordTermination=UNIX&dataStartDate=2017-01-01&dataDuration=365', local_file, n_retries, 1, gin_username, gin_password, proxy_address, n_folders, n_downloads, op_count)
   #local_file = os.path.join('2017', 'PET', 'pet20170908min.min')
   #op_count = getfile ('https://imag-data.bgs.ac.uk/GIN_V1/GINServices?Request=GetData&format=IAGA2002&testObsys=0&observatoryIagaCode=PET&samplesPerDay=1440&orientation=HDZF&publicationState=adj-or-rep&recordTermination=UNIX&dataStartDate=2017-09-08&dataDuration=1', local_file, n_retries, 1, gin_username, gin_password, proxy_address, n_folders, n_downloads, op_count)
   
