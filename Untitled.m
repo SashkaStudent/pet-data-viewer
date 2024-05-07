@@ -7,8 +7,8 @@
 signal_n = (signal - min(signal)) / ( max(signal) - min(signal));
 [A, D] = dwt(signal, 'db3');
 %freqs(X, psi)
-z = zeros(722, 1)
-dFreq = idwt(A, zeros(722,1), 'db3');
+%z = zeros(722*2, 1)
+%dFreq = idwt(A, zeros(722*2,1), 'db3');
 n1 = length(D);
 nMax = length(signal);
 D_lerp = interp1(1:n1, D, linspace(1, n1, nMax));
@@ -26,7 +26,7 @@ len = 32;
 fb = dwtfilterbank('Wavelet','db3','SignalLength',len);
 %freqz(fb)
 %tfest
-data = iddata(signal, dFreq , 1440*60);
+data = iddata(A, D , 1440*60);
 sys = tfest(data, 2);
 %[h,w] = freqz(sys);
 
